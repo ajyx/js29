@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #wrap{height: 70px;font-size: 14px;}
+        #wrap span{display: inline-block;width: 50px;height: 40px;line-height: 40px;text-align: center}
+        #wrap input{height: 30px;width: 250px;border: 1px solid #D9D9D9;border-radius: 5px;padding-left: 10px;}
+        #wrap button{width: 70px;height: 30px;margin-left: 10px;outline: 0;background-color: #2F79BA;border: 0;color: white;border-radius: 5px;}
+        #wrap div{color: #B1B1B1;font-size: 12px;margin-left: 50px;margin-top: 5px}
+    </style>
+    <script>
+        function Aclick(){
+            var v=document.getElementById("user").value;
+            var num=0;
+//            判断数字，字母，汉字
+           for(var i=0;i< v.length;i++){
+               var str=v.charCodeAt(i);
+            if(str>0&&str<126){
+                num++;
+           }
+               else{
+            num+=2
+            }
+           }
+            if(v==""||v==null){
+                document.getElementById("ts").innerHTML="姓名不能为空";
+                document.getElementById("ts").style.color="red";
+                document.getElementById("user").style.border="1px solid red"
+            }
+            else if(num<4||num>16){
+                document.getElementById("ts").innerHTML="格式不正确";
+                document.getElementById("ts").style.color="red";
+                document.getElementById("user").style.border="1px solid red"
+
+            }
+           else{
+                document.getElementById("ts").innerHTML="格式正确";
+                document.getElementById("ts").style.color="#65BC49";
+                document.getElementById("user").style.border="1px solid #65BC49"
+            }
+        }
+    </script>
+</head>
+<body>
+<!--
+必填，长度为4-16个字符
+每个英文字母、数字、英文符号长度为1
+每个汉字，中文符号长度为2
+-->
+<div id="wrap">
+    <span>姓名</span><input type="text" value="" id="user"><button onclick="Aclick()">验证</button>
+    <div id="ts">必填，长度为4-16个字符</div>
+</div>
+
+</body>
+</html>
